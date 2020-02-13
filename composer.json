@@ -1,0 +1,16 @@
+{
+    "name": "romainmazb/freshair",
+    "type": "library",
+    "description": "Light backend skin for OctoberCMS",
+    "keywords": ["october", "octobercms", "backend", "skin"],
+    "homepage": "https://www.maz.digital",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Romain 'Maz' B",
+            "email": "contact@maz.digital",
+            "homepage": "https://www.maz.digital",
+            "role": "Developer"
+        }
+    ]
+}
