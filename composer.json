@@ -1,7 +1,7 @@
 {
-    "name": "romainmazb/freshair",
+    "name": "romainmazb/lightside",
     "type": "library",
-    "description": "Light backend skin for OctoberCMS",
+    "description": "Light backend skin with side menu for OctoberCMS",
     "keywords": ["october", "octobercms", "backend", "skin"],
     "homepage": "https://www.maz.digital",
     "license": "MIT",

@@ -1,0 +1,110 @@
+@tailwind base;
+
+@tailwind components;
+
+.form-group.tw-font-black>label{
+    @apply text-lg font-black;
+}
+
+.form-group.tw-font-black .field-richeditor {
+    @apply font-normal;
+}
+
+html {
+    font-size: 100% !important;
+}
+
+.form-buttons {
+    @apply m-5;
+}
+
+.form-widget > .layout-row > .has-tabs#Form-primaryTabs > .tab-content  > .tab-pane {
+    @apply px-5;
+}
+
+.form-widget > .layout-row > .has-tabs > .layout-row > .nav.nav-tabs {
+    @apply mx-0;
+}
+
+.form-widget > .layout-row > .has-tabs > .layout-row > .nav.nav-tabs > li a span span {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.control-tabs.primary-tabs >div >ul.nav-tabs >li a >span.title {
+    @apply flex flex-col;
+}
+
+.control-tabs.primary-tabs >div >ul.nav-tabs >li a >span.title span {
+    @apply flex-grow;
+    background-color: #F9F9F9;
+}
+
+.form-preview .control-tabs.primary-tabs >div >ul.nav-tabs >li a >span.title span {
+    @apply bg-white;
+}
+
+.control-tabs.primary-tabs >div >ul.nav-tabs >li.active a >span.title {
+    margin-bottom:-2px;
+}
+
+.control-tabs.primary-tabs >div >ul.nav-tabs >li.active a >span.title span {
+    padding-bottom:2px;
+}
+
+div:not(.fancy-layout) > .form-widget > .layout-row > .form-tabless-fields#Form-outsideTabs, .partial-field.span-full {
+    @apply px-5 pt-5 mb-5 bg-white shadow;
+}
+
+.tab-pane > .partial-field.span-full,  .relation-manager > .form-widget > .layout-row > .control-tabs > .tab-content{
+    @apply p-0 bg-transparent shadow-none;
+}
+
+.scoreboard, .toolbar-widget, .list-widget {
+    @apply bg-white shadow;
+}
+
+.relation-toolbar > .toolbar-widget {
+    @apply bg-transparent shadow-none;
+}
+
+.scoreboard {
+    @apply pt-5 !important;
+}
+
+.tab-content {
+    @apply bg-white shadow;
+}
+
+.form-preview {
+    @apply p-0 m-0 bg-transparent;
+}
+
+#layout-secondary-nav ul li a {
+    @apply tw-border-gray-500;
+}
+
+#layout-secondary-nav ul li.active a {
+    @apply pt-1 pb-2 underline bg-gray-200 border-blue-500;
+}
+
+/* Tab content - closed */
+#right-sidebar .tab {
+    @apply flex-grow-0;
+}
+
+#right-sidebar .tab .tab-content {
+    @apply hidden;
+}
+
+#right-sidebar .tab.active {
+    @apply flex-grow;
+}
+
+#right-sidebar .tab.active .tab-content {
+    @apply block;
+}
+
+@tailwind utilities;

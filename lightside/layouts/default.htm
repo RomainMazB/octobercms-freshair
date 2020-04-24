@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="<?= App::getLocale() ?>" class="no-js <?= $this->makeLayoutPartial('browser_detector') ?>">
+    <head>
+        <?= $this->makeLayoutPartial('head') ?>
+        <?= $this->fireViewEvent('backend.layout.extendHead', ['layout' => 'default.htm']) ?>
+    </head>
+    <body class="<?= $this->bodyClass ?> tw-relative tw-bg-gray-200 tw-font-sans tw-leading-normal tw-tracking-normal tw-min-h-screen tw-flex tw-flex-col">
+
+        <!-- October logo and secondary menu -->
+        <div class="tw-bg-white tw-shadow tw-flex tw-items-end tw-z-10">
+            <object class="tw-text-black tw-fill-current tw-h-8 tw-my-1" type="image/svg+xml" data="<?= Backend::skinAsset('assets/images/october-logo.svg') ?>">
+                OctoberCMS
+            </object>
+            <div class="tw-flex-grow">
+                <?= $this->makeLayoutPartial('secondary-nav') ?>
+            </div>
+        </div>
+
+        <div class="tw-flex tw-flex-grow tw-my-12 tw-pr-4">
+            <!-- Side menu -->
+            <div class="tw-pl-6 tw-max-w-xs tw-pt-12 tw-pb-6 tw-h-full">
+                <?= $this->makeLayoutPartial('mainmenu') ?>
+            </div>
+
+            <div class="tw-relative tw-mr-6 tw-flex-grow">
+                <!-- Breadcrumb -->
+                <?php if ($breadcrumbContent = Block::placeholder('breadcrumb')): ?>
+                <div class="control-breadcrumb tw-mx-0 tw-mb-5">
+                    <?= $breadcrumbContent ?>
+                </div>
+            <?php endif ?>
+                <?= Block::placeholder('body') ?>
+            </div>
+
+            <?php
+                $flyoutContent = Block::placeholder('sidepanel-flyout');
+                $sidePanelContent = Block::placeholder('sidepanel');
+            ?>
+
+            <?php if ($sidePanelContent || $flyoutContent): ?>
+            <div id="right-sidebar" class="tw-flex tw-flex-none tw-flex-col tw-items-start tw-max-w-xs tw-h-full tw-w-full">
+                <!-- Side panel -->
+                <?php if ($sidePanelContent): ?>
+                <div class="tw-flex-grow tw-bg-white tw-shadow tw-w-full tab active tw-overflow-hidden flyout-container">
+                    <h3 class="tw-p-2 tw-leading-normal">Navigation</h3>
+                    <div class="tab-content tw-h-full"
+                        id="layout-side-panel" data-control="layout-sidepanel"
+                    >
+                        <?= $sidePanelContent ?>
+                    </div>
+                </div>
+                <?php endif ?>
+
+                <?php if ($flyoutContent): ?>
+                <div class="flex-grow tw-bg-white tw-shadow tw-mt-6 tw-w-full tab tw-overflow-hidden">
+                    <h3 class="tw-p-2 tw-leading-normal">Plugins selector</h3>
+                    <div class="tab-content tw-h-full">
+                        <?= $flyoutContent ?>
+                    </div>
+                </div>
+                <?php endif ?>
+            </div>
+            <?php endif ?>
+
+        </div>
+
+        <!-- Flash Messages -->
+        <div id="layout-flash-messages"><?= $this->makeLayoutPartial('flash_messages') ?></div>
+
+    </body>
+</html>

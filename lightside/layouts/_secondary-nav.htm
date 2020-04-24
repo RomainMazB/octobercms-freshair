@@ -1,0 +1,37 @@
+<?php
+    $context = BackendMenu::getContext();
+    $contextSidenav = BackendMenu::getContextSidenavPartial($context->owner, $context->mainMenuCode);
+
+    if (!$contextSidenav):
+        $sideMenuItems = BackendMenu::listSideMenuItems();
+        if ($sideMenuItems): ?>
+        <nav data-active-class="active" data-control="sidenav"  id="layout-secondary-nav">
+            <ul class="tw-flex tw-justify-center tw-flex-wrap tw-text-lg">
+                <?php foreach ($sideMenuItems as $sideItemCode => $item):
+                    $itemIsActive = BackendMenu::isSideMenuItemActive($item)
+                ?>
+                <li class="tw-mx-1 tw-border-gray-200 tw-border-l tw-border-r <?= $itemIsActive ? 'active' : null ?>"
+                    <?= Html::attributes($item->attributes) ?>
+                >
+                    <a href="<?= $item->url ?>"
+                        class="tw-font-thin tw-border-t-2 tw-rounded-t tw-pb-2 tw-px-6 tw-text-gray-600">
+                        <span class="nav-icon">
+                            <?php if ($item->iconSvg): ?>
+                            <img class="svg-icon" src="<?= Url::asset($item->iconSvg) ?>">
+                            <?php endif ?>
+
+                            <i class="<?= $item->iconSvg ? 'svg-replace' : null ?> <?= $item->icon ?>"></i>
+                        </span>
+                        <span class="nav-label">
+                            <?= e(trans($item->label)) ?>
+                        </span>
+                    </a>
+                </li>
+                <?php endforeach ?>
+            </ul>
+        </nav>
+        <?php
+        endif;
+        else: ?>
+            <?= $this->makePartial($contextSidenav) ?>
+    <?php endif ?>

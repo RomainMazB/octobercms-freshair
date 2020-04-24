@@ -7,6 +7,7 @@
 <meta name="backend-timezone" content="<?= e(Backend\Models\Preference::get('timezone')) ?>">
 <meta name="backend-locale" content="<?= e(Backend\Models\Preference::get('locale')) ?>">
 <meta name="csrf-token" content="<?= csrf_token() ?>">
+<link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800" rel="stylesheet">
 <link rel="icon" type="image/png" href="<?= e(Backend\Models\BrandSetting::getFavicon()) ?>">
 <title data-title-template="<?= empty($this->pageTitleTemplate) ? '%s' : e($this->pageTitleTemplate) ?> | <?= e(Backend\Models\BrandSetting::get('app_name')) ?>">
     <?= e(trans($this->pageTitle)) ?> | <?= e(Backend\Models\BrandSetting::get('app_name')) ?>
@@ -17,15 +18,16 @@
     // Styles
     $styles = [
         Url::asset('modules/system/assets/ui/storm.css'),
-        Backend::skinAsset('assets/css/style.css'),
         Backend::skinAsset('assets/css/october.css'),
+        Backend::skinAsset('assets/css/style.css')
     ];
 
     // Scripts
     $scripts = [
         Backend::skinAsset('assets/js/vendor/jquery.min.js'),
         Backend::skinAsset('assets/js/vendor/jquery-migrate.min.js'),
-        Url::asset('modules/system/assets/js/framework.js')
+        Url::asset('modules/system/assets/js/framework.js'),
+        Backend::skinAsset('assets/js/skin.js'),
     ];
     if (Config::get('develop.decompileBackendAssets', false)) {
         $scripts = array_merge($scripts, Backend::decompileAsset('modules/system/assets/ui/storm.js'));

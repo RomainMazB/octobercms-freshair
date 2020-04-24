@@ -1,0 +1,4 @@
+<?php
+    $systemItems = System\Classes\SettingsManager::instance()->listItems('system');
+?>
+<?= $this->makePartial(plugins_path().'/romainmazb/lightside/system/partials/settings_menu_items', ['items' => $systemItems]); ?>

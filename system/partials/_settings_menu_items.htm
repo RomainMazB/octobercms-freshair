@@ -1,0 +1,25 @@
+<?php
+    $context = System\Classes\SettingsManager::instance()->getContext();
+    $selectedItem = System\Classes\SettingsManager::instance()->findSettingItem($context->owner, $context->itemCode);
+    $selectedCategory = $selectedItem ? $selectedItem->category : null;
+?>
+<ul class="tw-flex tw-justify-center tw-flex-wrap tw-text-lg">
+    <?php foreach ($items as $category => $items): ?>
+        <li class="tw-relative tw-group tw-mx-1 tw-border-gray-200 tw-border-l tw-border-r backend-menu-list">
+            <span
+                class="<?= $category == $selectedCategory ? 'tw-py-1 tw-underline tw-bg-gray-200 tw-border-blue-500' : 'tw-border-gray-500' ?> tw-font-thin tw-border-t-2 tw-rounded-t tw-pb-2 tw-px-6 tw-text-gray-600">
+                <?= e(trans($category)) ?>
+            </span>
+            <ul class="tw-absolute tw-hidden group-hover:tw-block tw-px-2 tw-bg-white tw-border-gray-200 tw-border tw-rounded-b">
+                <?php foreach ($items as $item): ?>
+                    <li data-keywords="<?= e(trans($item->keywords)) ?>">
+                        <a href="<?= $item->url ?>" title="<?= e(trans($item->description)) ?>" class="<?= $item === $selectedItem ? 'tw-text-black' : 'tw-text-gray-600' ?> tw-whitespace-no-wrap">
+                            <i class="<?= $item->icon ?>"></i>
+                            <?= e(trans($item->label)) ?>
+                        </a>
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        </li>
+    <?php endforeach ?>
+</ul>
